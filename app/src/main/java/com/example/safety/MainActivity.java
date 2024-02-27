@@ -12,8 +12,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void tripathi()
-    {}
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
