@@ -6,10 +6,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    public void fun()
-    {
 
-    }
 
 
 
