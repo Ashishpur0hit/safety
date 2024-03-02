@@ -7,26 +7,23 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.safety.databinding.ActivityMainBinding;
+import com.example.safety.databinding.ActivitySignUpUserBinding;
 
-public class MainActivity extends AppCompatActivity {
-
-
-    private ActivityMainBinding binding;
-
-
+public class SignUp_User extends AppCompatActivity {
+    private ActivitySignUpUserBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivitySignUpUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnLogIn.setOnClickListener(new View.OnClickListener() {
+
+        binding.btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, navbar.class));
+                startActivity(new Intent(SignUp_User.this,MainActivity.class));
             }
         });
     }
