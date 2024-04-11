@@ -58,6 +58,7 @@
 
 
                     <EditText
+                        android:id="@+id/SignupName"
                         android:layout_width="300dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"
@@ -101,11 +102,12 @@
 
 
                     <EditText
+                        android:id="@+id/SignUpAddress"
                         android:layout_width="300dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"
                         android:hint="Enter Your Address"
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="#9d9d9d" />
 
@@ -145,11 +147,12 @@
 
 
                     <EditText
+                        android:id="@+id/SignupEmail"
                         android:layout_width="300dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"
                         android:hint="Enter Your Email"
-                        android:inputType="textPassword"
+                        android:inputType="textEmailAddress"
                         android:textColor="@color/black"
                         android:textColorHint="#9d9d9d" />
 
@@ -189,6 +192,7 @@
 
 
                     <EditText
+                        android:id="@+id/SignUpPassword"
                         android:layout_width="300dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"

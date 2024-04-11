@@ -12,6 +12,8 @@ import com.example.safety.databinding.ActivityNavbarBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Objects;
+
 public class navbar extends AppCompatActivity {
 
     private ActivityNavbarBinding binding;
@@ -21,6 +23,8 @@ public class navbar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityNavbarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
 
         binding.NavigationBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

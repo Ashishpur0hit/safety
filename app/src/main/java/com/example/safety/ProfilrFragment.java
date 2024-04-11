@@ -1,5 +1,6 @@
 package com.example.safety;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +65,21 @@ public class ProfilrFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profilr, container, false);
+        View v =  inflater.inflate(R.layout.fragment_profilr, container, false);
+
+        Button logout = v.findViewById(R.id.btnLogOut);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+                startActivity(new Intent(getActivity(),MainActivity.class));
+                requireActivity().finish();
+            }
+        });
+
+
+        return v;
     }
 }

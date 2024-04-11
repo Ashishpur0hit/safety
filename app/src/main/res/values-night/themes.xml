@@ -5,5 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="android:statusBarColor">#FFA500</item>
     </style>
-    <style name="Theme.myTheme" parent="Base.Theme.Safety" />
+    <style name="Theme.AppCompat.MyTheme" parent="Base.Theme.Safety" />
 </resources>
