@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        //----------------------------------Already LogIn-----------------------------------------------------------------//
+        //----------------------------------------------------------------------------Already LogIn--------------------------------------------------------------------------//
         if(auth.getCurrentUser()!=null)
         {
             startActivity(new Intent(MainActivity.this, navbar.class));
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //---------------------------------------------------------------New User------------------------------------------------//
+        //---------------------------------------------------------------New User------------------------------------------------------------------------------------------//
         binding.tvNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
