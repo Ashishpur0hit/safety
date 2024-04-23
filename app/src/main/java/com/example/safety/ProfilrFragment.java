@@ -3,6 +3,7 @@ package com.example.safety;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -67,7 +68,7 @@ public class ProfilrFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_profilr, container, false);
 
-        Button logout = v.findViewById(R.id.btnLogOut);
+        CardView logout = v.findViewById(R.id.btnLogOut);
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
         logout.setOnClickListener(new View.OnClickListener() {

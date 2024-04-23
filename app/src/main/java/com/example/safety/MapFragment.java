@@ -2,23 +2,36 @@ package com.example.safety;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.Map;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements OnMapReadyCallback,GoogleMap.OnMapClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    MapView mapView;
+    GoogleMap googleMap;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +72,44 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        View v =  inflater.inflate(R.layout.fragment_map, container, false);
+
+
+
+
+
+        mapView = v.findViewById(R.id.map);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync((OnMapReadyCallback) this);
+
+
+
+
+
+        return v;
+    }
+
+
+
+    public void onMapReady(GoogleMap map) {
+        googleMap = map;
+        // Now you can customize the map if needed
+        // For example:
+        // googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        googleMap.setOnMapClickListener((GoogleMap.OnMapClickListener) this);
+
+        // Add a marker in New Delhi and move the camera
+        LatLng newDelhi = new LatLng(28.6139, 77.2090);
+        googleMap.addMarker(new MarkerOptions().position(newDelhi).title("Marker in New Delhi"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(newDelhi, 10)); // Zoom level 10
+
+        // Optional: Enable zoom controls
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+    }
+
+    @Override
+    public void onMapClick(@NonNull LatLng latLng) {
+
     }
 }
