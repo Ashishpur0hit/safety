@@ -107,6 +107,23 @@
                         android:textStyle="bold" />
 
                     <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/attachanimage" <!-- Placeholder image, you can replace it with the actual image from the gallery -->
+                        />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
                         android:id="@+id/btnUpload"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
