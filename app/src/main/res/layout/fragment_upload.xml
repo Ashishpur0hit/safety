@@ -27,127 +27,266 @@
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="sans-serif-black"
                     android:text="Publish Post"
-                    android:padding="20dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="@color/black"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
+                    android:textSize="28sp" />
 
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="19dp"
                     android:layout_marginTop="25dp"
-                    android:text="Location"
+                    android:text="Location / Landmark"
                     android:textColor="@color/black"
-                    android:textSize="23sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
-            </LinearLayout>
 
-            <EditText
+
+
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="18 Circle Drive pikesile"
-                android:textColorHint="#9d9d9d"
-                android:drawableLeft="@drawable/loc"
-                android:layout_marginLeft="20dp"
+                android:layout_margin="10dp"
+                android:background="#e7e7e7"
+                app:cardBackgroundColor="#e7e7e7"
+                app:cardCornerRadius="15sp"
+                app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/loc" />
+
+
+                <EditText
+                    android:id="@+id/SignupName"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:hint="State , District , City"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textColorHint="#9d9d9d" />
+
+
+            </LinearLayout></androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="18dp"
+                android:text="Route Info"
                 android:textColor="@color/black"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bck_lyt"
-                android:padding="10dp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <RelativeLayout
+
+
+
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp">
+                android:layout_margin="10dp"
+                android:background="#e7e7e7"
+                app:cardBackgroundColor="#e7e7e7"
+                app:cardCornerRadius="15sp"
+                app:cardElevation="15dp">
 
                 <LinearLayout
-                    android:id="@+id/ProfileStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/DemoPostUserName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="23sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:text="Project Title"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/baseline_alt_route_24" />
+
 
                     <EditText
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:hint="To - From"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/black"
+                        android:textColorHint="#9d9d9d" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="18dp"
+                android:text="Problem / Issue with Road "
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#e7e7e7"
+                app:cardBackgroundColor="#e7e7e7"
+                app:cardCornerRadius="15sp"
+                app:cardElevation="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/multiLineEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Subject"
+                        android:inputType="textMultiLine"
+                        android:lines="5"
+                        android:gravity="start|top"
+                        android:hint="Please Specify the Isuue  eg.. Pot Holes ..."
+                        android:scrollbars="vertical"
+                        android:background="@android:color/transparent"
+                        android:padding="8dp"
                         android:textColorHint="#9d9d9d"
-                        android:textColor="@color/black"
-                        android:drawableLeft="@drawable/create12"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/bck_lyt"
-                        android:padding="10dp" />
+                        android:layout_margin="8dp"
+                    />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
 
                     <CheckBox
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Include my name in the post"
-                        android:textSize="20dp"
                         android:layout_marginTop="20dp"
+                        android:text="Mark this as an Accident prone Area ."
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cvAddphoto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp">
 
                         <ImageView
-                            android:id="@+id/imageView"
+                            android:id="@+id/ShowImage"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/attachanimage" <!-- Placeholder image, you can replace it with the actual image from the gallery -->
-                        />
+                            android:src="@drawable/attachanimage" />
 
                     </androidx.cardview.widget.CardView>
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Other Suggestions :"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#e7e7e7"
+                    app:cardBackgroundColor="#e7e7e7"
+                    app:cardCornerRadius="15sp"
+                    app:cardElevation="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <EditText
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:lines="5"
+                            android:gravity="start|top"
+                            android:hint="Accidental Suggestions eg .. convex Mirrors / glowing lanes tape .."
+                            android:scrollbars="vertical"
+                            android:textColorHint="#9d9d9d"
+                            android:background="@android:color/transparent"
+                            android:padding="8dp"
+                            android:layout_margin="8dp"
+                            />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btnUpload"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
-                        app:cardBackgroundColor="#ffa500"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="70dp"
                         android:layout_marginBottom="17dp"
+                        app:cardBackgroundColor="#ffa500"
                         app:cardCornerRadius="15dp"
-                        android:layout_gravity="center_horizontal"
                         app:cardElevation="15dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="Public Post"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
                             android:textColor="@color/white"
-                            android:layout_gravity="center" />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                     </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
 
-            </RelativeLayout>
+
+
 
         </LinearLayout>
 

@@ -43,6 +43,7 @@
                 app:cardBackgroundColor="#e7e7e7">
 
                 <EditText
+                    android:id="@+id/etLongitude"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Longitude Co-ordinate"
@@ -66,6 +67,7 @@
                 app:cardBackgroundColor="#e7e7e7">
 
                 <EditText
+                    android:id="@+id/etlatitude"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Latitude Co-ordinate"
@@ -97,6 +99,7 @@
                     app:cardBackgroundColor="#e7e7e7">
 
                     <EditText
+                        android:id="@+id/etCity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="City"
@@ -122,9 +125,10 @@
                     app:cardBackgroundColor="#e7e7e7">
 
                     <EditText
+                        android:id="@+id/etRoadName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Postal Code"
+                        android:hint="Road name"
                         android:textColorHint="#808080"
                         android:inputType="textPersonName"
                         android:textColor="@color/black"

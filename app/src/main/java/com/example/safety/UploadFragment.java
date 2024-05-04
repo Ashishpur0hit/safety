@@ -1,12 +1,22 @@
 package com.example.safety;
 
+import static android.companion.CompanionDeviceManager.RESULT_OK;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +27,14 @@ public class UploadFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    CardView imagepost ;
+    ImageView showimage;
+    private final int req_code = 0;
+    private Uri ImageUri;
+
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -59,6 +77,37 @@ public class UploadFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_upload, container, false);
+        View v =  inflater.inflate(R.layout.fragment_upload, container, false);
+        imagepost = v.findViewById(R.id.cvAddphoto);
+        showimage = v.findViewById(R.id.ShowImage);
+
+        //--------------------------------gallery intent----------------------------------------------------------------------------//
+
+
+        imagepost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gallery = new Intent(Intent.ACTION_PICK);
+                gallery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(gallery , req_code);
+            }
+        });
+
+
+
+        return v;
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode==RESULT_OK && data!=null && requestCode==req_code)
+        {
+            ImageUri= data.getData();
+            Glide.with(getActivity()).load(ImageUri).into(showimage);
+        }
     }
 }
