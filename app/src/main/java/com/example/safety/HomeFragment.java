@@ -2,11 +2,25 @@ package com.example.safety;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +37,13 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private FirebaseDatabase DB;
+    private RecyclerView PostRecycler;
+    private DatabaseReference curr_user , root;
+    private ArrayList<UserPostModel> list;
+    private UserPostAdapter adapter;
+    private String UID;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,6 +80,46 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
+        UID = FirebaseAuth.getInstance().getUid();
+        PostRecycler = v.findViewById(R.id.ReviewRecyclerView);
+        PostRecycler.setLayoutManager(new LinearLayoutManager(v.getContext()));
+        list = new ArrayList<>();
+        adapter = new UserPostAdapter(v.getContext(),list);
+        PostRecycler.setAdapter(adapter);
+        root = FirebaseDatabase.getInstance().getReference().child("Posts");
+
+
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for(DataSnapshot data : snapshot.getChildren())
+                {
+                    UserPostModel modelimg = new UserPostModel( data.child("PostImage").getValue(String.class) , data.child("Caption").getValue(String.class) , data.child("Profile").getValue(String.class) , data.child("UserName").getValue(String.class),data.child("Suggestions").getValue(String.class),Integer.valueOf(Objects.requireNonNull(data.child("Upvote").getValue(String.class))),Integer.valueOf(Objects.requireNonNull(data.child("Downvote").getValue(String.class))),data.child("isAccidentProne").getValue(String.class),data.child("Status").getValue(String.class));
+                    list.add(0,modelimg);
+                }
+
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(v.getContext(), ""+error.getDetails(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+        return v;
     }
 }

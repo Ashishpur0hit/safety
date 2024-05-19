@@ -73,7 +73,7 @@
 
 
                 <EditText
-                    android:id="@+id/SignupName"
+                    android:id="@+id/etLoaction"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="10dp"
@@ -123,6 +123,7 @@
 
 
                     <EditText
+                        android:id="@+id/etToFrom"
                         android:layout_width="300dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"
@@ -162,7 +163,7 @@
 
 
                     <EditText
-                        android:id="@+id/multiLineEditText"
+                        android:id="@+id/etCaption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
@@ -172,6 +173,7 @@
                         android:scrollbars="vertical"
                         android:background="@android:color/transparent"
                         android:padding="8dp"
+                        android:textColor="@color/black"
                         android:textColorHint="#9d9d9d"
                         android:layout_margin="8dp"
                     />
@@ -189,6 +191,7 @@
 
 
                     <CheckBox
+                        android:id="@+id/cbIsAccProne"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -243,8 +246,9 @@
 
 
                         <EditText
-
+                            android:id="@+id/etSuggestions"
                             android:layout_width="match_parent"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
                             android:inputType="textMultiLine"
                             android:lines="5"
