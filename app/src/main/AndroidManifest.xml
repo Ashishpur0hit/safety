@@ -16,40 +16,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight"
         tools:targetApi="31">
+        <activity
+            android:name=".authority"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAj7KRJ2dxrieHx5KRS5lf81ReVhU6YRXY" />
 
-
-
         <activity
             android:name=".navbar"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".SignUp_User"
-            android:exported="false">
-
-
-
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
-
-
-
         </activity>
     </application>
 
