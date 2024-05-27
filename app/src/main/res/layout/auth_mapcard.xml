@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -34,6 +34,21 @@
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"/>
+
+            <ImageView
+                android:id="@+id/AccMapReq"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/baseline_add_task_24"
+                android:layout_marginEnd="20dp"
+                android:layout_toLeftOf="@+id/DelMapReq"/>
+
+            <ImageView
+                android:id="@+id/DelMapReq"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/baseline_auto_delete_24"
+                android:layout_alignParentEnd="true"/>
 
             <TextView
                 android:id="@+id/Longitude"
@@ -122,6 +137,7 @@
 
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -148,7 +164,6 @@
 
 
             </LinearLayout>
-
 
 
 

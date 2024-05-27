@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ViewHolder> {
 
@@ -55,7 +56,11 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ViewHo
         Glide.with(context).load(list.get(position).getProfile()).into(holder.Profile);
         holder.Suggestions.setText(list.get(position).Suggestions);
         holder.Upvote.setText(String.valueOf(list.get(position).Upvote));
-        holder.Status.setText(String.valueOf(list.get(position).status));
+       if(Objects.equals(list.get(position).getStatus(), "Accepted"))
+        {
+            holder.Status.setTextColor(context.getResources().getColor(R.color.green));
+        }
+        holder.Status.setText(list.get(position).getStatus());
 
 
     }

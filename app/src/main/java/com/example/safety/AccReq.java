@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,33 +24,40 @@ import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
+ * Use the {@link AccReq#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class AccReq extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    static final String ARG_PARAM1 = "param1";
-    static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+
+
+    private RecyclerView AcceptedRecyclerView;
+    private DatabaseReference curr_user , root,root2;
+    private ArrayList<AcceptedPostModel> list;
+    private AcceptedPostAdapter adapter;
+    private String UID;
+
+    private  AcceptedMapAdapter mapAdapter;
+
+    private ArrayList<AcceptedMapModel>maplist;
+    private RecyclerView MapRecyclerView;
+
+
+
+
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    private FirebaseDatabase DB;
-    private RecyclerView PostRecycler;
-    private DatabaseReference curr_user , root,root2;
-    private ArrayList<UserPostModel> list;
-    private UserPostAdapter adapter;
-    private String UID;
-
-    private  MapAdapter mapAdapter;
-
-    private ArrayList<MapreqModel>maplist;
-    private RecyclerView MapRecyclerView;
-
-    public HomeFragment() {
+    public AccReq() {
         // Required empty public constructor
     }
 
@@ -61,11 +67,11 @@ public class HomeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
+     * @return A new instance of fragment AccReq.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
+    public static AccReq newInstance(String param1, String param2) {
+        AccReq fragment = new AccReq();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -86,26 +92,25 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
+        View v =  inflater.inflate(R.layout.fragment_auth_home, container, false);
         UID = FirebaseAuth.getInstance().getUid();
-        PostRecycler = v.findViewById(R.id.ReviewRecyclerView);
-        PostRecycler.setLayoutManager(new LinearLayoutManager(v.getContext()));
-        String UID = FirebaseAuth.getInstance().getUid();
+        AcceptedRecyclerView = v.findViewById(R.id.ReviewRecyclerView);
+        AcceptedRecyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
+
         list = new ArrayList<>();
-        adapter = new UserPostAdapter(v.getContext(),list);
-        PostRecycler.setAdapter(adapter);
-        root = FirebaseDatabase.getInstance().getReference().child("Users").child(UID).child("USerPosts");
+        adapter = new AcceptedPostAdapter(v.getContext(),list);
+        AcceptedRecyclerView.setAdapter(adapter);
+        root = FirebaseDatabase.getInstance().getReference().child("AcceptedRequests");
 
 
         MapRecyclerView = v.findViewById(R.id.MapRecyclerView);
         LinearLayoutManager layoutManager  = new LinearLayoutManager(v.getContext() ,  LinearLayoutManager.HORIZONTAL , false);
         MapRecyclerView.setLayoutManager(layoutManager);
         maplist = new ArrayList<>();
-        mapAdapter = new MapAdapter(v.getContext() , maplist);
+        mapAdapter = new AcceptedMapAdapter(v.getContext() , maplist);
         MapRecyclerView.setAdapter(mapAdapter);
+        root2 = FirebaseDatabase.getInstance().getReference().child("AcceptedMap");
 
-        assert UID != null;
-        root2 = FirebaseDatabase.getInstance().getReference().child("Users").child(UID).child("MapReq");
 
 
 
@@ -115,20 +120,17 @@ public class HomeFragment extends Fragment {
                 maplist.clear();
                 for (DataSnapshot data : snapshot.getChildren()) {
 
-                        String profile = data.child("Profile").getValue(String.class);
-                        String city = data.child("City").getValue(String.class);
-                        String roadName = data.child("RoadName").getValue(String.class);
-                        String lng = String.valueOf(data.child("Longitude").getValue());
-                        String lat = String.valueOf(data.child("Latitude").getValue());
-                        String userName = data.child("UserName").getValue(String.class);
-                        String status = data.child("Status").getValue(String.class);
+                    String profile = data.child("Profile").getValue(String.class);
+                    String city = data.child("City").getValue(String.class);
+                    String userName = data.child("UserName").getValue(String.class);
 
 
-                            MapreqModel modelimg = new MapreqModel(profile, city, roadName, lat + " " + lng, userName,status);
-                            maplist.add(0, modelimg);
+
+                    AcceptedMapModel modelimg = new AcceptedMapModel(profile,userName,city);
+                    maplist.add(0, modelimg);
 
 
-                        }
+                }
                 mapAdapter.notifyDataSetChanged();
             }
 
@@ -140,19 +142,13 @@ public class HomeFragment extends Fragment {
 
 
 
-
-
-
-
-
-
         root.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for(DataSnapshot data : snapshot.getChildren())
                 {
-                    UserPostModel modelimg = new UserPostModel( data.child("PostImage").getValue(String.class) , data.child("Caption").getValue(String.class) , data.child("Profile").getValue(String.class) , data.child("UserName").getValue(String.class),data.child("Suggestions").getValue(String.class),Integer.valueOf(Objects.requireNonNull(data.child("Upvote").getValue(String.class))),Integer.valueOf(Objects.requireNonNull(data.child("Downvote").getValue(String.class))),data.child("isAccidentProne").getValue(String.class),data.child("Status").getValue(String.class));
+                    AcceptedPostModel modelimg = new AcceptedPostModel(data.child("PostImage").getValue(String.class),data.child("UserName").getValue(String.class),data.child("Caption").getValue(String.class));
                     list.add(0,modelimg);
                 }
 
@@ -165,15 +161,6 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(v.getContext(), ""+error.getDetails(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-
-
-
-
-
 
 
         return v;

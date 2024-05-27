@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Requests"
+        android:id="@+id/Requests"
+        android:icon="@drawable/white_home" />
+
+
+
+
+
+    <item
+        android:title="Map"
+        android:id="@+id/Map"
+        android:icon="@drawable/map_white" />
+
+    <item
+        android:title="Accepted Requests"
+        android:id="@+id/Accepted"
+        android:icon="@drawable/baseline_handshake_24" />
+
+
+    <item
+        android:title="Profile"
+        android:id="@+id/Profile"
+        android:icon="@drawable/white_person1"/>
+
+</menu>

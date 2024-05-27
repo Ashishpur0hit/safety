@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment"
+    tools:context=".AuthHome"
     android:background="#e7e7e7"
     android:orientation="vertical">
 
@@ -33,7 +32,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:layout_marginBottom="20dp"
-                    android:text="My Map Requests"
+                    android:text="All Map requests"
                     android:textStyle="bold"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"/>
@@ -65,7 +64,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_marginBottom="20dp"
-            android:text="My Manual Requests"
+            android:text="All Post requests"
             android:textStyle="bold"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"/>
@@ -83,7 +82,6 @@
         <!-- TODO: Update blank fragment layout -->
 
     </LinearLayout>
-
 
 
 </androidx.core.widget.NestedScrollView>

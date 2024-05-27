@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_marginTop="15dp"
+    app:cardBackgroundColor="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:id="@+id/div"
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/AuthProfile"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/profileme"/>
+
+            <TextView
+                android:id="@+id/AuthUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/ProfilePic"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:text="Demo Yadav"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"/>
+
+
+            <TextView
+                android:id="@+id/AuthStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/UserName"
+                android:textColor="#0000ff"
+                android:textSize="15sp"
+                android:text="Not Accepted"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"/>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/AuthCaption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/div"
+
+            android:layout_marginStart="15dp"
+            android:text="Alsa Hum Bhi rakhte hai Pehelwaan"
+            android:textColor="@color/black"/>
+
+
+        <TextView
+            android:id="@+id/AuthSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AuthCaption"
+            android:textStyle="bold"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:text="Institue Name"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:id="@+id/AuthUploadedImage"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/highway1"
+            android:scaleType="centerCrop"
+            android:layout_below="@+id/AuthSuggestions"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/AuthUploadedImage"
+            app:cardBackgroundColor="@color/black"
+            android:layout_marginTop="5dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/line"
+            android:padding="6dp"
+            android:gravity="center_vertical">
+
+
+
+            <TextView
+                android:id="@+id/AccReq"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="ACCEPT"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-black"
+                android:textColor="#449144"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="REJECT"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-black"
+                android:textColor="#FF0000"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"/>
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

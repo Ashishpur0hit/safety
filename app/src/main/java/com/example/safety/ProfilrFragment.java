@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -71,14 +72,15 @@ public class ProfilrFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profilr, container, false);
 
         CardView logout = v.findViewById(R.id.btnLogOut);
+        TextView Name = v.findViewById(R.id.TvUserName);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         profile = v.findViewById(R.id.IvProfile);
         uid = auth.getUid();
 
         if (uid != null) {
-            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("Profile");
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
 
-            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            userRef.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
@@ -92,6 +94,22 @@ public class ProfilrFragment extends Fragment {
                     Toast.makeText(requireContext(), "Failed to load profile image: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+            userRef.child("UserName").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String name = dataSnapshot.getValue(String.class);
+                        Name.setText(name);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(requireContext(), "Failed to load profile image: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
         } else {
             Toast.makeText(getContext(), "User not logged in", Toast.LENGTH_SHORT).show();
         }
