@@ -40,7 +40,7 @@
             android:textSize="18sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Authority Here"
+            android:text="BHuwnesh "
             android:layout_toRightOf="@id/IvProfile"
             android:layout_below="@+id/MenuText"
             android:layout_marginTop="25dp"
@@ -248,7 +248,7 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btnLogOut"
+                android:id="@+id/btnLogOut12"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 app:cardBackgroundColor="@color/blue"
