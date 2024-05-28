@@ -40,7 +40,7 @@
             android:textSize="18sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="BHuwnesh "
+            android:text="Authority"
             android:layout_toRightOf="@id/IvProfile"
             android:layout_below="@+id/MenuText"
             android:layout_marginTop="25dp"
