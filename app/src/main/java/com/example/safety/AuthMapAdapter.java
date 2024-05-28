@@ -92,14 +92,14 @@ public class AuthMapAdapter extends RecyclerView.Adapter<AuthMapAdapter.ViewHold
                                 }
 
                                 data.getRef().child("Status").setValue("Accepted");
-                                Toast.makeText(context, "Ui Updated On User", Toast.LENGTH_SHORT).show();
+
                                 break;
                             }
                     }}
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 //
@@ -124,8 +124,6 @@ public class AuthMapAdapter extends RecyclerView.Adapter<AuthMapAdapter.ViewHold
 
                                 if(Objects.equals(status, "Accepted"))
                                 {
-                                    Toast.makeText(context, "Already Accepted", Toast.LENGTH_SHORT).show();
-
                                     break;
                                 }
 
@@ -153,7 +151,7 @@ public class AuthMapAdapter extends RecyclerView.Adapter<AuthMapAdapter.ViewHold
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 

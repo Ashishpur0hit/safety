@@ -1,5 +1,6 @@
 package com.example.safety;
 
+import static android.app.PendingIntent.getActivity;
 import static com.example.safety.HomeFragment.ARG_PARAM1;
 import static com.example.safety.HomeFragment.ARG_PARAM2;
 
@@ -42,6 +43,9 @@ public class ProfilrFragment extends Fragment {
     CircleImageView profile;
     private Uri imageUri;
     private String uid;
+    private DatabaseReference userRef;
+    private ValueEventListener profileListener;
+    private ValueEventListener nameListener;
 
     public ProfilrFragment() {
         // Required empty public constructor
@@ -78,37 +82,48 @@ public class ProfilrFragment extends Fragment {
         uid = auth.getUid();
 
         if (uid != null) {
-            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+            userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
 
-            userRef.child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
+            profileListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         String imageUrl = dataSnapshot.getValue(String.class);
-                        Glide.with(requireContext()).load(imageUrl).into(profile);
+                        if (imageUrl != null) {
+                            Glide.with(requireContext()).load(imageUrl).into(profile);
+                        }
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(requireContext(), "Failed to load profile image: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    if (isAdded()) {
+                        Toast.makeText(requireContext(), "Failed to load profile image: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-            });
-            userRef.child("UserName").addListenerForSingleValueEvent(new ValueEventListener() {
+            };
+
+            nameListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         String name = dataSnapshot.getValue(String.class);
-                        Name.setText(name);
+                        if (name != null) {
+                            Name.setText(name);
+                        }
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(requireContext(), "Failed to load profile image: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    if (isAdded()) {
+                        Toast.makeText(requireContext(), "Failed to load username: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-            });
+            };
 
+            userRef.child("Profile").addListenerForSingleValueEvent(profileListener);
+            userRef.child("UserName").addListenerForSingleValueEvent(nameListener);
 
         } else {
             Toast.makeText(getContext(), "User not logged in", Toast.LENGTH_SHORT).show();
@@ -172,6 +187,19 @@ public class ProfilrFragment extends Fragment {
             imageUri = data.getData();
             Glide.with(getActivity()).load(imageUri).into(profile);
             updateProfile();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (userRef != null) {
+            if (profileListener != null) {
+                userRef.child("Profile").removeEventListener(profileListener);
+            }
+            if (nameListener != null) {
+                userRef.child("UserName").removeEventListener(nameListener);
+            }
         }
     }
 }

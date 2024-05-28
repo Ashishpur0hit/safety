@@ -126,14 +126,13 @@ public class AuthMap extends Fragment implements OnMapReadyCallback {
 
                         }
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "Error retrieving data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "" + error.getDetails(), Toast.LENGTH_SHORT).show();
             }
         });
     }
